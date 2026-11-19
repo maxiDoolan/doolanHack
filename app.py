@@ -8,10 +8,12 @@ from dotenv import load_dotenv
 from datetime import date
 
 load_dotenv()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
+SUPABASE_URL = os.getenv("SUPABASE_URL") or st.secrets.get("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY") or st.secrets.get("SUPABASE_KEY")
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
-
+client = Groq(api_key=GROQ_API_KEY)
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 # ── HELPERS SUPABASE ─────────────────────────────────────────────────────────
 
 def cargar_gastos():
